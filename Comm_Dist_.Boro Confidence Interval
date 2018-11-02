@@ -1,0 +1,73 @@
+ setwd("C:/Users/Ebony & Adony/Desktop/math 327")
+ FV<-read.csv("2017_Family_Violence_Related_Snapshots__New_York_City_Community_Board_Districts.csv")
+ str(FV)
+#'data.frame':	64 obs. of  7 variables:
+  $ Comm_Dist_.Boro: Factor w/ 5 levels "Bronx ","Brooklyn ",..: 1 1 1 1 1 1 1 1 1 1 ...
+$ Comm_District  : Factor w/ 23 levels " BXJIA ","1",..: 2 12 13 14 15 16 17 18 19 3 ...
+$ FAM_DIR        : int  2459 1131 2833 2337 2247 1442 1613 572 2626 1162 ...
+$ FAM_Fel_Assault: int  109 40 65 87 73 58 60 18 111 30 ...
+$ DV_Fel_Assault : int  299 106 190 206 244 179 192 64 289 85 ...
+$ FAM_Rape       : int  7 4 3 6 5 6 6 0 5 1 ...
+$ DV_Rape        : int  17 9 10 10 14 14 15 2 13 3 ...
+ head(FV)
+#Comm_Dist_.Boro Comm_District FAM_DIR FAM_Fel_Assault DV_Fel_Assault FAM_Rape DV_Rape
+1          Bronx              1    2459             109            299        7      17
+2          Bronx              2    1131              40            106        4       9
+3          Bronx              3    2833              65            190        3      10
+4          Bronx              4    2337              87            206        6      10
+5          Bronx              5    2247              73            244        5      14
+6          Bronx              6    1442              58            179        6      14
+ tail(FV)
+#Comm_Dist_.Boro Comm_District FAM_DIR FAM_Fel_Assault DV_Fel_Assault FAM_Rape DV_Rape
+59         Queens             14    2129              89            232        5      15
+60         Queens          QNJIA       5               0              1        0       0
+61  Staten Island              1    3042              76            206       13      17
+62  Staten Island              2     914              20             54        1       2
+63  Staten Island              3     726              13             38        1       2
+64  Staten Island         SIJIA        2               0              0        0       0
+ boro<-FV$Comm_Dist_.Boro
+ boro
+#
+[1] Bronx          Bronx          Bronx          Bronx          Bronx          Bronx         
+[7] Bronx          Bronx          Bronx          Bronx          Bronx          Bronx         
+[13] Bronx          Brooklyn       Brooklyn       Brooklyn       Brooklyn       Brooklyn      
+[19] Brooklyn       Brooklyn       Brooklyn       Brooklyn       Brooklyn       Brooklyn      
+[25] Brooklyn       Brooklyn       Brooklyn       Brooklyn       Brooklyn       Brooklyn      
+[31] Brooklyn       Brooklyn       Manhattan      Manhattan      Manhattan      Manhattan     
+[37] Manhattan      Manhattan      Manhattan      Manhattan      Manhattan      Manhattan     
+[43] Manhattan      Manhattan      Manhattan      Queens         Queens         Queens        
+[49] Queens         Queens         Queens         Queens         Queens         Queens        
+[55] Queens         Queens         Queens         Queens         Queens         Queens        
+[61] Staten Island  Staten Island  Staten Island  Staten Island 
+Levels: Bronx  Brooklyn  Manhattan Queens  Staten Island 
+ bronx<-boro=="Bronx"
+ bronx
+#
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[17] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[33] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ b=mean(bronx)
+ b
+
+ #[1] 0
+b_hat=mean(bronx)
+b_hat
+#[1] 0
+ sum(bronx)
+#[1] 0
+ nrow(FV)
+#[1] 64
+ 
+prop.test(sum(bronx),nrow(FV),p=0.112)
+#
+                          1-sample proportions test with continuity correction
+                          
+                          data:  sum(bronx) out of nrow(FV), null probability 0.112
+                          X-squared = 6.9852, df = 1, p-value = 0.008219
+                          alternative hypothesis: true p is not equal to 0.112
+                          95 percent confidence interval:
+                            0.00000000 0.07054814
+                          sample estimates:
+                            p 
+                          0 
