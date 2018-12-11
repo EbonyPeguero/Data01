@@ -1,0 +1,6 @@
+setwd("~/Desktop/EP Math 327")
+FV<-read.csv("2017_Family_Violence_Related_Snapshots__New_York_City_Community_Board_Districts (1).csv", strip.white = TRUE)
+str(FV)
+plot(FV$FAM_Rape,FV$DV_Rape, xlab="Family Rape", ylab="Domestic Violence Rape")
+plot(FV$DV_Fel_Assault,FV$FAM_Fel_Assault, xlab="Domestic Violence Felony Assault", ylab="Family Felony Assault")
+plot(FV$FAM_Fel_Assault,FV$FAM_Rape, xlab="Family Felony Assault", ylab="Family Rape")
